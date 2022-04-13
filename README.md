@@ -1,4 +1,39 @@
 # lin_lab2
+
+apt-get install sudo
+
+A feladatok ellenőrzéséhez szükséges tennivalók
+A https://github.com/ng201/iru linkről az iru-data.iru fájl kell letölteni a RENDES gépre (nem a
+virtuálisra, mert nincs rajta hálózat). Ha az egész github repot letöltöd, akkor a zip állományt
+csomagold ki.
+
+Indíts el a Winscp-t, majd add meg host-ként a virtuális gép IP címét a maszk nélkül (maszk a /24 a
+végén) port maradjon 22. Felhasználó: laboruser Jelszó: laboruser
+Ha nem enged be, akkor vagy nincsen jól beállítva a tűzfal, vagy a protokoll nem a winscp-n, nekünk
+SCP-t mondták, hogy azzal kell.
+
+Ha beengedett, akkor keresd meg az iru-data.iru fájlt a gépen és húzd bele a virtuális gép
+root/home/laboruser mappába.
+Ez valószínűleg nem fog menni, mert nem root-al winscpztél be, ilyenkor másold be valahova ahova
+van jogod pl laboruser/desktop aztán a virtuális gépen copyzd át root/home/laboruser mappába (ha
+nem megy akkor su root aztán a copy)
+
+Ezután a virtuális gépen lépj be a laboruser mappába:
+cd /home/laboruser/
+Itt add ki a:
+cp iru-data.iru /root/root
+parancsot (a lényeg másold be a fájlt a root mappába, majd ellenőrizd le, hogy ott van-e).
+Ha sikerült és jó helyen van, akkor bárhol kiadod a iru-test NEPTUN parancsot, lefuttatja a szkriptet
+és kiértékeli a labort. Ha csak egy rész egységet akarsz ellenőrizni akkor iru-test X NEPTUN, X
+eleme 1,2,3. 40% esetén haladj tovább.
+
+Ha már itt vagy a githubról letöltött zipből a ‘web’ mappa TARTALMÁT is felrakhatod a virtuális gépre
+/var/www/irulabor mappába és akkor ezt később nem kell már megtenned. (esélyes hogy nincs még
+ilyen mappa - ilyenkor a mkdir a barátod)
+
+1. A rendszer indítása után…
+su root -al nyugodtan csapd át magad rootá, abból baj nem lehet pw: irulabor
+
 1.2
 dpkg -l
 
